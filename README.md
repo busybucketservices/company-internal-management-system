@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Busy Bucket Logo" width="140">
+</p>
+
 # Busy Bucket 🧹
 
 **We clean, you relax.**
