@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Busy Bucket — Create Partner Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="manager-edit.css">
+</head>
+<body>
+<div class="frame">
+  <div class="scroll-area">
+
+    <div class="topbar">
+      <div class="topbar-row">
+        <div class="brand">Busy Bucket ·manager</div>
+        <button class="icon-btn" title="Close" Onclick="window.location.href='manager-dashboard.html'">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+    
+      </div>
+      <div class="title"> Manager Profile</div>
+      <div class="subtitle"> details, documents &amp; verification</div>
+      <div class="step-track">
+        <span><i style="width:100%"></i></span>
+        <span><i style="width:100%"></i></span>
+        <span><i style="width:0%"></i></span>
+      </div>
+    </div>
+
+    <div class="avatar-card">
+      <div class="avatar"> </div>
+      <div class="avatar-info">
+        <div class="a-title">Manager Details</div>
+        <div class="a-sub">Photo add karna optional hai — pehle details bharein</div>
+      </div>
+    </div>
+
+    <div class="body">
+
+    
+
+      <!-- PARTNER DETAILS -->
+      <div class="section-label"><span class="step-num">1</span>Partner Details</div>
+      <div class="card">
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" id="fullNameInput" placeholder="e.g. Ramesh Kumar">
+          <div class="locked-note" id="nameLockedNote" style="display:none;"><span class="lock-dot"></span> Naam verify ho chuka hai — ab edit nahi ho sakta</div>
+        </div>
+        <div class="field">
+          <label>Phone Number</label>
+          <div class="otp-row">
+            <input type="tel" id="phoneNumberInput" placeholder="10-digit mobile number">
+            <button class="otp-btn" id="sendOtpBtn">Send OTP</button>
+          </div>
+          <div class="otp-status" id="phoneOtpStatus" style="display:none;"><span class="dot"></span> Verified via OTP</div>
+          <div class="locked-note" id="phoneLockedNote" style="display:none;"><span class="lock-dot"></span> Number verify ho chuka hai — ab edit nahi ho sakta</div>
+        </div>
+        <div class="field alt-number-field">
+          <label>Alternate Numbers <span class="optional-tag">Optional</span></label>
+          <div class="alt-num-list" id="altNumList"></div>
+          <div class="otp-row">
+            <input type="tel" id="altNumberInput" placeholder="Naya alternate number likhein">
+            <button class="otp-btn" id="addAltNumBtn">+ Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGIN ID & PASSWORD -->
+      <div class="section-label"><span class="step-num">2</span>Login ID &amp; Password</div>
+      <div class="card">
+        <p class="hint">Manager is ID aur password se login karega.</p>
+        <div class="field">
+          <label>Manager Login ID</label>
+          <input type="text" id="loginIdInput" value="BB-7421" readonly>
+       
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="otp-row">
+            <input type="password" id="passwordInput" value="Busy@7421" readonly>
+            <button class="otp-btn" id="togglePwdBtn">Show</button>
+          </div>
+          <div class="pwd-actions">
+            <button class="text-btn" id="genPwdBtn">Change Password</button>
+            <button class="text-btn" id="copyPwdBtn">Copy</button>
+          </div>
+        </div>
+      
+      </div>
+
+      <!-- DOCUMENTS -->
+      <div class="section-label"><span class="step-num">3</span>Document Proof</div>
+      <div class="card">
+        <p class="hint">Document ka naam likhein aur file upload karein — .</p>
+        <div class="doc-grid" id="docGrid">
+          <div class="doc-card">
+            <div class="doc-icon">PAN</div>
+            <div class="doc-meta">
+              <div class="name">PAN Card</div>
+              <div class="state">No file uploaded yet</div>
+            </div>
+            <div class="doc-actions">
+              <button type="button" class="upload-btn">Upload</button>
+              <button type="button" class="view-btn">View</button>
+              <button type="button" class="doc-remove" title="Remove">&times;</button>
+            </div>
+          </div>
+        </div>
+        <div class="add-row" style="margin-top:12px;">
+          <input type="text" id="newDocInput" placeholder="Document ka naam (e.g. Police Verification)">
+          <button class="add-btn" id="addDocBtn">+ Add</button>
+        </div>
+        <input type="file" id="docFileInput" accept="image/*,.pdf">
+      </div>
+
+      <!-- PERMISSIONS -->
+    
+
+      <!-- STATUS -->
+      <div class="section-label"><span class="step-num">4</span>Account Status</div>
+      <div class="card">
+        <div class="status-row pending">
+          <div class="status-left">
+            <div class="t">Profile is Pending Approval</div>
+            <div class="d">Waiting for head office approval — partner won't get job assignments till then</div>
+          </div>
+          <span class="pill pending">PENDING APPROVAL</span>
+        </div>
+      </div>
+
+      <div class="footnote">Profile approve hone ke baad partner ko login ID aur password mil jayega.</div>
+
+    </div>
+  </div>
+
+  <footer>
+    <button class="btn ghost " onclick="window.location.href='manager-dashboard.html'">Cancel</button>
+    <button class="btn primary"   onclick="window.location.href='manager-dashboard.html'">Send for Approval</button>
+  </footer>
+</div>
+
+
+   
+
+<script src="manager-edit.js"></script>
+</body>
+</html>

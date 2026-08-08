@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0F4C3A, #145A45, #1E7A5C);
+    padding: 20px;
+}
+
+.main-box {
+    width: 450px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 25px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
+}
+
+.main-box::before {
+    content: "Select Your Panel";
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.panel {
+    text-decoration: none;
+    color: #fff;
+    padding: 25px;
+    border-radius: 18px;
+    transition: .35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, .08);
+    opacity: 0;
+    transition: .35s;
+}
+
+.panel:hover::before {
+    opacity: 1;
+}
+
+.panel:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+.panel h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.panel p {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: .9;
+    position: relative;
+    z-index: 1;
+}
+
+.admin {
+    background: linear-gradient(135deg, #0F4C3A, #1A7F5A);
+}
+
+.partner {
+    background: linear-gradient(135deg, #FF8C00, #FFB347);
+}
+
+.admin:hover {
+    box-shadow: 0 15px 35px rgba(15, 76, 58, .45);
+}
+
+.partner:hover {
+    box-shadow: 0 15px 35px rgba(195, 126, 42, 0.45);
+}
+
+@media (max-width: 500px) {
+    .main-box {
+        width: 100%;
+        padding: 25px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    .panel h2 {
+        font-size: 20px;
+    }
+}

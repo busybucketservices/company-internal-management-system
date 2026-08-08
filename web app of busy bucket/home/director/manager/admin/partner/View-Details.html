@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Details | Busy Bucket</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="view-details.css">
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- ===================== PAGE 1 : Booking Details ===================== -->
+  <div class="page-view active" id="viewDetailsPage">
+    <div class="scroll-area">
+
+      <div class="topbar">
+        <div class="topbar-row">
+          <button class="icon-btn" onclick="window.location.href='dashboard.html'" title="Back" aria-label="Back">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="brand">Booking Details</div>
+          <div style="width:34px"></div>
+        </div>
+        <div class="title">Kotla Road</div>
+        <div class="subtitle">Booking #BB2207 · 3 Services</div>
+      </div>
+
+      <div class="body" style="padding-top:22px;">
+
+        <!-- Customer Detail -->
+        <div class="section-label">Customer Detail</div>
+        <div class="detail-card">
+          <div class="detail-row">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1E5C46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="detail-text">
+              <div class="d-main">Ratna Nagar</div>
+              <div class="d-sub">Kotla Road · Mohali</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1E5C46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="detail-text">
+              <div class="d-main">+91 98XXX XX210</div>
+              <div class="d-sub">Tap to call</div>
+            </div>
+            <button id="customerCallBtn" class="mini-call-btn" type="button" data-phone="+919800000210">Call</button>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1E5C46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </div>
+            <div class="detail-text">
+              <div class="d-main">9:00 AM – 2:00 PM</div>
+              <div class="d-sub">Aaj · 3 booking slot</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partner Live Location -->
+        <div class="section-label">Partner Live Location</div>
+        <div class="live-location-card">
+          <div class="live-map">
+            <svg viewBox="0 0 380 130" preserveAspectRatio="none">
+              <rect x="0" y="0" width="380" height="130" fill="var(--green-50)"/>
+              <path d="M0 30 H380 M0 70 H380 M0 105 H380" stroke="var(--line)" stroke-width="1"/>
+              <path d="M60 0 V130 M160 0 V130 M260 0 V130 M330 0 V130" stroke="var(--line)" stroke-width="1"/>
+              <path d="M55 95 C120 60, 180 100, 250 45 S 320 30, 335 32" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-dasharray="1 8" stroke-linecap="round"/>
+              <circle cx="55" cy="95" r="7" fill="var(--green-700)"/>
+              <circle cx="55" cy="95" r="12" fill="var(--green-700)" opacity="0.25">
+                <animate attributeName="r" values="8;16;8" dur="2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.35;0;0.35" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="335" cy="32" r="6" fill="var(--red)"/>
+              <path d="M335 20 a6 6 0 0 1 0 12 a6 6 0 0 1 0 -12" fill="none"/>
+            </svg>
+          </div>
+          <div class="live-info-row">
+            <div class="live-badge"><span class="live-dot"></span><span id="liveUpdatedText">Live · updated just now</span></div>
+            <div id="liveDistance" class="live-distance">1.6 km away</div>
+          </div>
+          <div class="live-address">Partner near <b>Sector 70, Mohali</b> · <span id="liveEta">ETA 6 min to Kotla Road</span></div>
+        </div>
+
+        <!-- Service Detail -->
+        <div class="section-label">Service Detail</div>
+        <div class="service-detail-card">
+
+          <div class="service-detail-row" data-service="cleaning">
+            <div class="sd-text">
+              <div class="sd-name">Home Deep Cleaning</div>
+              <div class="sd-sub">2 BHK · Kothi No. 92</div>
+            </div>
+            <div class="sd-actions">
+              <label class="payment-check">
+                <input type="checkbox" id="cleaningPaidCheck" disabled>
+                Payment aa gaya
+              </label>
+              <button id="cleaningDoneBtn" class="pill-btn" type="button" disabled>Done</button>
+            </div>
+          </div>
+
+          <div class="service-detail-row" data-service="ac">
+            <div class="sd-text">
+              <div class="sd-name">AC Service</div>
+              <div class="sd-sub">2 units · Ratna Apartments</div>
+            </div>
+            <div class="sd-actions">
+              <label class="payment-check">
+                <input type="checkbox" id="acPaidCheck" disabled>
+                Payment aa gaya
+              </label>
+              <button id="acDoneBtn" class="pill-btn" type="button" disabled>Done</button>
+            </div>
+          </div>
+
+          <div class="service-detail-row" data-service="pest">
+            <div class="sd-text">
+              <div class="sd-name">Pest Control</div>
+              <div class="sd-sub">2 bathroom · Kotla Road</div>
+            </div>
+            <div class="sd-actions">
+              <button id="pestReadyBtn" class="pill-btn ready" type="button" disabled>Ready</button>
+            </div>
+          </div>
+
+        </div>
+        <div class="lock-hint" id="lockHint">🔒 Job actions payment-side selfie ke baad unlock honge</div>
+
+        <div class="cta-row" style="margin-top:24px;">
+          <button class="cta cta-primary" type="button" id="openPaymentReviewBtn">
+            <span>
+              <span class="cta-title">Payment aur Review</span>
+              <span class="cta-sub">Amount collect karein, review dekhein</span>
+            </span>
+            <span class="cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </button>
+        </div>
+
+        <div class="footnote">Busy Bucket Partner App · Booking details</div>
+      </div>
+
+    </div><!-- /.scroll-area -->
+
+    <div class="bottom-nav">
+      <a href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5B6B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Dashboard
+      </a>
+      <a href="attendance.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5B6B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Attendance
+      </a>
+      <a href="payments.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5B6B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Payments
+      </a>
+    </div>
+  </div>
+
+  <!-- ===================== PAGE 2 : Payment & Review ===================== -->
+  <div class="page-view" id="paymentReviewPage">
+    <div class="scroll-area">
+
+      <div class="topbar">
+        <div class="topbar-row">
+          <button class="icon-btn" id="backToDetailsBtn" title="Back" aria-label="Back">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="brand">Payment &amp; Review</div>
+          <div style="width:34px"></div>
+        </div>
+        <div class="title">Kotla Road</div>
+        <div class="subtitle">Booking #BB2207 · Amount collect karein</div>
+      </div>
+
+      <div class="body" style="padding-top:22px;">
+
+        <!-- Payment -->
+        <div class="section-label">Payment</div>
+        <div class="payment-card">
+          <div class="payment-row">
+            <div class="pay-label">Total Amount</div>
+            <div class="pay-value">₹2,450</div>
+          </div>
+          <div class="payment-row">
+            <div class="pay-label">Amount Due</div>
+            <div class="pay-value due" id="amountDueValue">₹2,450</div>
+          </div>
+
+          <div class="pay-mode-label">Payment Mode</div>
+          <div class="pay-mode-row">
+            <button class="pay-mode-btn" id="cashModeBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+              Cash
+            </button>
+            <button class="pay-mode-btn active" id="upiModeBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 9V7a4 4 0 0 0-8 0v2"/><rect x="5" y="9" width="14" height="12" rx="2"/></svg>
+              UPI
+            </button>
+          </div>
+
+          <!-- Scan-to-pay QR — ab har payment mode (Cash + UPI) mein dikhega -->
+          <div id="upiUploadSection" style="margin-top:16px;">
+            <div class="pay-mode-label" style="margin-top:0;">Customer se Scan Karwayein</div>
+            <div class="qr-wrap">
+              <div class="qr-box" id="qrBox">
+                <img id="qrImage" alt="UPI QR Code">
+              </div>
+              <div class="qr-status" id="qrStatus">
+                <span id="qrStatusText">Payment ka wait ho raha hai…</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="mark-paid-btn" id="markPaidBtn" type="button" disabled>Payment Done</button>
+        </div>
+
+        <!-- Review -->
+        <div class="section-label">Customer Review</div>
+        <div class="review-card">
+          <div class="review-head">
+            <div class="r-main" style="font-family:'Fraunces',serif; font-weight:600; font-size:14.5px;">Rating record karein</div>
+            <div class="review-stars" id="reviewStars">
+              <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+            </div>
+          </div>
+          <div class="r-sub">Customer ne verbally jo rating di ho, wahi yahan tap karke record kar dein.</div>
+        </div>
+
+      
+
+        <!-- Work Proof — live camera photo, then upload -->
+        <div class="section-label">Work Proof</div>
+        <div class="proof-card">
+          <div class="capture-box" id="proofBox">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <div class="cap-label">Camera</div>
+          </div>
+          <input type="file" id="proofFileInput" accept="image/*" capture="environment">
+          <div class="capture-status" id="proofStatus">Koi proof photo upload nahi hui</div>
+          <button class="upload-confirm-btn" id="uploadProofBtn" type="button" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+            Proof Upload Karein
+          </button>
+        </div>
+
+        <div class="footnote">Busy Bucket Partner App · Payment &amp; Review</div>
+      </div>
+
+    </div><!-- /.scroll-area -->
+
+    <div class="bottom-nav">
+      <a href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5B6B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Dashboard
+      </a>
+      <a href="attendance.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5B6B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Attendance
+      </a>
+      <a href="payments.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5B6B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Payments
+      </a>
+    </div>
+  </div>
+
+  <!-- Payment se pehle selfie — ab .frame ke andar hi rehta hai, isliye overlay
+       poore page pe nahi, sirf is phone-frame ke andar hi (rounded corners ke
+       saath) dikhta hai. Koi alag safed/mismatched area nahi banta. -->
+  <div class="startjob-overlay hidden" id="startJobModal">
+    <div class="startjob-card">
+      <button class="startjob-close" id="startJobCloseBtn" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="startjob-title">Payment Se Pehle Selfie</div>
+      <div class="startjob-sub">Payment lene se pehle apni ek live photo kheenchein — yeh verification ke liye zaroori hai.</div>
+      <div class="selfie-box" id="selfieBox">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <div class="sb-label">Live Selfie</div>
+      </div>
+      <input type="file" id="selfieFileInput" accept="image/*" capture="user">
+      <div class="capture-status" id="selfieStatus">Koi photo upload nahi hui</div>
+      <button class="startjob-btn" id="startJobBtn" disabled>Continue to Payment</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="view-details.js"></script>
+</body>
+</html>

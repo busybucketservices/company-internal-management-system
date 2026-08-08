@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Busy Bucket — Partner Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="director-login.css">
+</head>
+<body>
+<div class="frame">
+  <div class="scroll-area">
+
+    <!-- Shared hero -->
+    <div class="hero">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16l-1.6 10.4a2 2 0 0 1-2 1.6H7.6a2 2 0 0 1-2-1.6L4 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      </div>
+      <div class="brand-name">Busy Bucket · Partner</div>
+      <div class="hero-title" id="heroTitle">Welcome back</div>
+      <div class="hero-sub" id="heroSub">Log in to manage partners, services &amp; bookings</div>
+    </div>
+
+    <div class="body">
+
+      
+      <div class="view active" id="viewLogin">
+        <div class="field">
+          <label>Login ID</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" placeholder="Admin ID or phone number">
+          </div>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <input type="password" placeholder="Enter your password" id="loginPass">
+            <button class="toggle-eye" data-target="loginPass">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="row-between">
+          <label class="remember"><span class="box" id="rememberBox"></span> Remember me</label>
+          <button class="link-btn" id="goForgot">Forgot password?</button>
+        </div>
+        <button class="btn-primary"  onclick="window.location.href='director-dashboard.html'">
+          Log In
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <div class="divider">or</div>
+        <div class="switch-line">New admin? <button id="goRegister">Register here</button></div>
+      </div>
+
+      <!-- REGISTER VIEW -->
+      <div class="view" id="viewRegister">
+        <div class="back-row" id="backFromRegister">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back to login</span>
+        </div>
+        <div class="field">
+          <label>Full Name</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+            <input type="text" placeholder="e.g. Priya Sharma">
+          </div>
+        </div>
+        <div class="field">
+          <label>Phone Number</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.99.36 1.96.7 2.89a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.19-1.27a2 2 0 0 1 2.11-.45c.93.34 1.9.57 2.89.7A2 2 0 0 1 22 16.92z"/></svg>
+            <input type="tel" placeholder="10-digit mobile number">
+          </div>
+        </div>
+        <div class="field">
+          <label>Create Login ID</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" placeholder="Choose a unique admin ID">
+          </div>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <input type="password" placeholder="Create a password" id="regPass">
+            <button class="toggle-eye" data-target="regPass">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Confirm Password</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <input type="password" placeholder="Re-enter password" id="regPass2">
+            <button class="toggle-eye" data-target="regPass2">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+       <a href="director-dashboard.html"><button class="btn-primary">
+          Create Account
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button></a>
+        <div class="switch-line" style="margin-top:16px;">Already registered? <button id="goLoginFromRegister">Log in</button></div>
+      </div>
+
+      <!-- FORGOT PASSWORD — step 1: enter phone -->
+      <div class="view" id="viewForgot1">
+        <div class="back-row" id="backFromForgot1">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back to login</span>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <p>Enter your registered login ID or phone number — we'll send a 6-digit OTP to reset your password.</p>
+        </div>
+        <div class="field">
+          <label>Login ID or Phone Number</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" placeholder="Admin ID or phone number">
+          </div>
+        </div>
+        <button class="btn-primary" id="sendResetOtp">
+          Send OTP
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- FORGOT PASSWORD — step 2: OTP -->
+      <div class="view" id="viewForgot2">
+        <div class="back-row" id="backFromForgot2">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Back</span>
+        </div>
+        <p class="hero-sub" style="color:var(--ink-soft); opacity:1; margin-bottom:20px;">
+          OTP bhej diya gaya hai <strong id="otpTargetText">+91 XXXXX XXXXX</strong> par. Neeche daaliye.
+        </p>
+        <div class="otp-boxes">
+          <input type="text" maxlength="1" inputmode="numeric">
+          <input type="text" maxlength="1" inputmode="numeric">
+          <input type="text" maxlength="1" inputmode="numeric">
+          <input type="text" maxlength="1" inputmode="numeric">
+          <input type="text" maxlength="1" inputmode="numeric">
+          <input type="text" maxlength="1" inputmode="numeric">
+        </div>
+        <div class="resend-line">Code nahi mila? <button id="resendOtp">Resend OTP</button></div>
+        <button class="btn-primary" id="verifyOtp">
+          Verify OTP
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- FORGOT PASSWORD — step 3: new password -->
+      <div class="view" id="viewForgot3">
+        <div class="field">
+          <label>New Password</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <input type="password" placeholder="Create a new password" id="newPass1">
+            <button class="toggle-eye" data-target="newPass1">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Confirm New Password</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <input type="password" placeholder="Re-enter new password" id="newPass2">
+            <button class="toggle-eye" data-target="newPass2">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <button class="btn-primary" id="resetPassBtn">
+          Reset Password
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="view" id="viewSuccess">
+        <div class="success-panel">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div class="success-title">Password Reset!</div>
+          <div class="success-sub">Aapka password successfully change ho gaya hai. Ab naye password se login karein.</div>
+          <button class="btn-primary" id="goLoginFromSuccess">Back to Login</button>
+        </div>
+      </div>
+
+      <div class="footnote">Need help? Contact your Busy Bucket ops team.</div>
+    </div>
+    <button onclick="window.location.href='/home/admin-home.html'" class="btn-primary">
+         back to home
+       </button>
+  </div>
+  
+</div>
+
+
+
+
+<script src="director-login.js"></script>
+</body>
+</html>

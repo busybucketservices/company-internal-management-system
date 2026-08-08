@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manager Dashboard | Busy Bucket</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="manager-dashboard.css">
+</head>
+<body>
+
+<div class="frame">
+  <div class="scroll-area">
+
+  <div class="topbar">
+    <div class="topbar-row">
+      <div class="brand">Busy Bucket · Manager App</div>
+      <div class="topbar-icons">
+        <div class="bell">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <div class="dot"></div>
+        </div>
+        <button class="icon-btn" onclick="window.location.href='manager-login.html'" title="Logout" aria-label="Logout">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="title">Manager Dashboard</div>
+    <div class="subtitle">Gurugram · 23 July</div>
+  </div>
+
+  <div class="admin-card">
+    <div class="admin-avatar">M</div>
+    <div class="admin-info">
+      <div class="ad-name">Rakesh</div>
+      <div class="ad-role">Manager</div>
+    </div>
+    <button class="edit-btn" onclick="window.location.href='manager-edit.html'">Edit Details</button>
+  </div>
+
+  <div class="body">
+
+    <!-- ===================== ADMINS OVERVIEW (Manager-only) ===================== -->
+    <div class="grid-4">
+      <div class="mini-stat">
+        <div class="ms-value" id="statActiveAdmin">6</div>
+        <div class="ms-label">Active Admin</div>
+      </div>
+      <div class="mini-stat gold">
+        <div class="ms-value" id="statAdminRequest">2</div>
+        <div class="ms-label">Admin Request</div>
+      </div>
+    </div>
+
+    <section class="panel" id="adminsPanel">
+
+      <div class="section-label">Admins</div>
+
+      <div class="chip-row" id="adminChips">
+        <div class="chip active" data-group="active">Active Admins</div>
+        <div class="chip" data-group="request">Admin Requests</div>
+      </div>
+
+      <div id="adminsDetailList">
+
+        <div class="partner-detail-card" data-group="active">
+          <div class="assign-head">
+            <div class="assign-title">Amit</div>
+            <span class="pd-tag fixed">Active Admin</span>
+          </div>
+          <div class="assign-line">Gurugram · Bookings &amp; Partners</div>
+          <div class="assign-line">Online — abhi active hai</div>
+          <div class="assign-actions">
+            <button class="view-profile-btn" onclick="window.location.href='admin/admin-try.html'">View Profile</button>
+          </div>
+        </div>
+
+        <div class="partner-detail-card" data-group="active">
+          <div class="assign-head">
+            <div class="assign-title">Suresh</div>
+            <span class="pd-tag fixed">Active Admin</span>
+          </div>
+          <div class="assign-line">Panchkula · Bookings &amp; Partners</div>
+          <div class="assign-line">Online — abhi active hai</div>
+          <div class="assign-actions">
+            <button class="view-profile-btn" onclick="window.location.href='admin/admin-try.html'">View Profile</button>
+          </div>
+        </div>
+
+        <div class="partner-detail-card" data-group="request">
+          <div class="assign-head">
+            <div class="assign-title">Kavita</div>
+            <span class="pd-tag request">New Request</span>
+          </div>
+          <div class="assign-line">Ludhiana · Admin banne ki request</div>
+          <div class="assign-line">Applied aaj</div>
+          <div class="assign-actions">
+            <button class="view-profile-btn" onclick="window.location.href='admin/admin-try.html'">View Profile</button>
+            <button class="btn-reject" onclick="this.closest('.partner-detail-card').remove(); updateManagerCounts();">Reject</button>
+            <button class="btn-approve" onclick="acceptAdminRequest(this)">Accept</button>
+          </div>
+        </div>
+
+        <div class="partner-detail-card" data-group="request">
+          <div class="assign-head">
+            <div class="assign-title">Deepak</div>
+            <span class="pd-tag request">New Request</span>
+          </div>
+          <div class="assign-line">Dehradun · Admin banne ki request</div>
+          <div class="assign-line">Applied kal</div>
+          <div class="assign-actions">
+            <button class="view-profile-btn" onclick="window.location.href='admin/partner/dashboard.html'">View Profile</button>
+            <button class="btn-reject" onclick="this.closest('.partner-detail-card').remove(); updateManagerCounts();">Reject</button>
+            <button class="btn-approve" onclick="acceptAdminRequest(this)">Accept</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="empty-state" id="emptyAdminGroup" style="display:none;">
+        Is category mein koi admin nahi hai.
+      </div>
+    </section>
+
+    <!-- ===================== ORIGINAL ADMIN DASHBOARD CONTENT BELOW (unchanged) ===================== -->
+    <div class="grid-4">
+      <div class="mini-stat">
+        <div class="ms-value" id="statActive">18</div>
+        <div class="ms-label">Active partners</div>
+      </div>
+      <div class="mini-stat gold">
+        <div class="ms-value" id="statPending">3</div>
+        <div class="ms-label">Pending approval</div>
+      </div>
+      <div class="mini-stat">
+        <div class="ms-value" id="statJobsToday">42</div>
+        <div class="ms-label">Jobs aaj</div>
+      </div>
+      <div class="mini-stat gold">
+        <div class="ms-value">₹1.2L</div>
+        <div class="ms-label">Payout aaj</div>
+      </div>
+    </div>
+
+    <!-- ===================== ABHI KI BOOKING SECTION ===================== -->
+    <section class="panel" id="bookingsPanel">
+
+      <div class="section-label">Chal rahi bookings</div>
+
+      <div class="chip-row" id="bookingViewChips">
+        <div class="chip active" data-view="today">New Booking</div>
+        <div class="chip" data-view="all">Today Total Booking</div>
+        <div class="chip" data-view="running">Running</div>
+      </div>
+
+      <div class="booking-grid" id="bookingGrid">
+
+        <div class="booking-card" data-status="new" data-view="today">
+          <div class="bk-top">
+            <div class="bk-service">AC service <span class="booking-id">#9440</span></div>
+            <span class="bk-running-badge pending">
+              <span class="pulse-dot"></span> New · <span class="bk-new-countdown">30</span>s
+            </span>
+          </div>
+          <div class="bk-line">Client: Neeraj Sharma · 99xxxxxx02</div>
+          <div class="bk-line">Chandigarh, Sector 22</div>
+          <div class="bk-line">Time: 6:00 PM · Partner: Vikash — Chandigarh</div>
+
+          <div class="bk-live-status muted">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Booking Assign mein bheji ja rahi hai...
+          </div>
+
+          <div class="bk-msg-box">
+            <textarea class="bk-msg-input" placeholder="Koi bhi message likhein..."></textarea>
+            <button class="bk-send-btn" onclick="sendClientMsg(this)">Send</button>
+          </div>
+
+          <div class="bk-actions four">
+            <button class="mini-btn outline full" onclick="window.location.href='admin/partner/dashboard.html'">Visit Profile</button>
+            <button class="mini-btn outline" onclick="editBooking(this)">Edit</button>
+            <button class="mini-btn ok" onclick="markBookingOk(this)">OK</button>
+            <button class="mini-btn reject" onclick="rejectBooking(this)">Reject</button>
+          </div>
+        </div>
+
+        <div class="booking-card" data-status="new" data-view="today">
+          <div class="bk-top">
+            <div class="bk-service">Deep cleaning <span class="booking-id">#9441</span></div>
+            <span class="bk-running-badge pending">
+              <span class="pulse-dot"></span> New · <span class="bk-new-countdown">30</span>s
+            </span>
+          </div>
+          <div class="bk-line">Client: Priya Malhotra · 96xxxxxx77</div>
+          <div class="bk-line">Ludhiana, Model Town</div>
+          <div class="bk-line">Time: 4:30 PM · Partner: Priya — Ludhiana</div>
+
+          <div class="bk-live-status muted">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Booking Assign mein bheji ja rahi hai...
+          </div>
+
+          <div class="bk-msg-box">
+            <textarea class="bk-msg-input" placeholder="Koi bhi message likhein..."></textarea>
+            <button class="bk-send-btn" onclick="sendClientMsg(this)">Send</button>
+          </div>
+
+          <div class="bk-actions four">
+            <button class="mini-btn outline full" onclick="window.location.href='admin/partner/dashboard.html'">Visit Profile</button>
+            <button class="mini-btn outline" onclick="editBooking(this)">Edit</button>
+            <button class="mini-btn ok" onclick="markBookingOk(this)">OK</button>
+            <button class="mini-btn reject" onclick="rejectBooking(this)">Reject</button>
+          </div>
+        </div>
+
+        <div class="booking-card" data-status="running" data-view="today all running">
+          <div class="bk-top">
+            <div class="bk-service">Home cleaning</div>
+            <span class="bk-running-badge" data-start-seconds="3580" data-duration-seconds="3600">
+              <span class="pulse-dot"></span> Running · <span class="bk-elapsed">00:00:00</span>
+            </span>
+          </div>
+          <div class="bk-line">Client: Rohit Verma · 98xxxxxx21</div>
+          <div class="bk-line">Sector 68, Kothi No. 92</div>
+          <div class="bk-line">Partner: Amit · 2:00 PM → 3:00 PM</div>
+
+          <div class="bk-live-status">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Amit abhi Sector 68 mein cleaning kar raha hai
+          </div>
+
+          <div class="bk-msg-box">
+            <textarea class="bk-msg-input" placeholder="Koi bhi message likhein..."></textarea>
+            <button class="bk-send-btn" onclick="sendClientMsg(this)">Send</button>
+          </div>
+
+
+          <div class="bk-actions four">
+            <button class="mini-btn outline full" onclick="window.location.href='admin/partner/dashboard.html'">Visit Profile</button>
+            <button class="mini-btn outline" onclick="editBooking(this)">Edit</button>
+            <button class="mini-btn ok" onclick="markBookingOk(this)">OK</button>
+            <button class="mini-btn reject" onclick="rejectBooking(this)">Reject</button>
+          </div>
+        </div>
+
+        <div class="booking-card" data-status="running" data-view="today all running">
+          <div class="bk-top">
+            <div class="bk-service">Bathroom cleaning</div>
+            <span class="bk-running-badge" data-start-seconds="5385" data-duration-seconds="5400">
+              <span class="pulse-dot"></span> Running · <span class="bk-elapsed">00:00:00</span>
+            </span>
+          </div>
+          <div class="bk-line">Client: Simran Kaur · 97xxxxxx45</div>
+          <div class="bk-line">Ratna Apartments, Zirakpur</div>
+          <div class="bk-line">Partner: Ramesh · 11:00 AM → 12:30 PM</div>
+
+          <div class="bk-live-status">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ramesh abhi Zirakpur mein bathroom clean kar raha hai
+          </div>
+
+          <div class="bk-msg-box">
+            <textarea class="bk-msg-input" placeholder="Koi bhi message likhein..."></textarea>
+            <button class="bk-send-btn" onclick="sendClientMsg(this)">Send</button>
+          </div>
+
+          <div class="bk-actions four">
+            <button class="mini-btn outline full" onclick="window.location.href='admin/partner/dashboard.html'">Visit Profile</button>
+            <button class="mini-btn outline" onclick="editBooking(this)">Edit</button>
+            <button class="mini-btn ok" onclick="markBookingOk(this)">OK</button>
+            <button class="mini-btn reject" onclick="rejectBooking(this)">Reject</button>
+          </div>
+        </div>
+
+        <div class="booking-card" data-status="upcoming" data-view="today all">
+          <div class="bk-top">
+            <div class="bk-service">Sofa cleaning</div>
+            <span class="bk-running-badge upcoming"><span class="pulse-dot"></span> Aaj 5:00 PM</span>
+          </div>
+          <div class="bk-line">Client: Karan Mehta · 91xxxxxx88</div>
+          <div class="bk-line">Sector 22, Chandigarh</div>
+          <div class="bk-line">Partner: Vikash · 5:00 PM → 6:00 PM</div>
+
+          <div class="bk-live-status muted">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Abhi shuru nahi hui — scheduled hai
+          </div>
+
+          <div class="bk-msg-box">
+            <textarea class="bk-msg-input" placeholder="Koi bhi message likhein..."></textarea>
+            <button class="bk-send-btn" onclick="sendClientMsg(this)">Send</button>
+          </div>
+
+          <div class="bk-actions four">
+            <button class="mini-btn outline full" onclick="window.location.href='admin/partner/dashboard.html'">Visit Profile</button>
+            <button class="mini-btn outline" onclick="editBooking(this)">Edit</button>
+            <button class="mini-btn ok" onclick="markBookingOk(this)">OK</button>
+            <button class="mini-btn reject" onclick="rejectBooking(this)">Reject</button>
+          </div>
+        </div>
+
+        <div class="booking-card" data-status="done" data-view="all">
+          <div class="bk-top">
+            <div class="bk-service">Kitchen cleaning</div>
+            <span class="bk-running-badge done"><span class="pulse-dot"></span> Complete</span>
+          </div>
+          <div class="bk-line">Client: Neha Sharma · 90xxxxxx33</div>
+          <div class="bk-line">Sector 40, Mohali</div>
+          <div class="bk-line">Partner: Suresh · 9:00 AM → 10:00 AM</div>
+
+          <div class="bk-live-status muted">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Job complete ho chuka hai
+          </div>
+
+          <div class="bk-msg-box">
+            <textarea class="bk-msg-input" placeholder="Koi bhi message likhein..."></textarea>
+            <button class="bk-send-btn" onclick="sendClientMsg(this)">Send</button>
+          </div>
+
+          <div class="bk-actions four">
+            <button class="mini-btn outline full" onclick="window.location.href='admin/partner/dashboard.html'">Visit Profile</button>
+            <button class="mini-btn outline" onclick="editBooking(this)">Edit</button>
+            <button class="mini-btn ok" onclick="markBookingOk(this)">OK</button>
+            <button class="mini-btn reject" onclick="rejectBooking(this)">Reject</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="empty-state" id="emptyBookingView" style="display:none;">
+        Is view mein koi booking nahi hai.
+      </div>
+    </section>
+
+    <!-- ===================== BOOKING ASSIGN SECTION ===================== -->
+    <section class="panel" id="assignPanel">
+
+      <div class="section-label">Naya booking add karein</div>
+      <form class="form-card" id="bookingForm">
+
+        <div class="field">
+          <label>Service type</label>
+          <select id="bkService" required>
+            <option value="">Select karein</option>
+            <option>Full home cleaning</option>
+            <option>Deep cleaning</option>
+            <option>Sofa cleaning</option>
+            <option>Bathroom cleaning</option>
+            <option>Kitchen cleaning</option>
+            <option>AC service</option>
+            <option>Office cleaning</option>
+          </select>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Client name</label>
+            <input type="text" id="bkName" placeholder="e.g. Rohit Verma" required>
+          </div>
+          <div class="field">
+            <label>Client phone</label>
+            <input type="text" id="bkPhone" placeholder="e.g. 98xxxxxx14" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>City</label>
+            <select id="bkCity">
+              <option>Mohali</option>
+              <option>Panchkula</option>
+              <option>Zirakpur</option>
+              <option>Chandigarh</option>
+              <option>Ludhiana</option>
+              <option>Dehradun</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Area / House No.</label>
+            <input type="text" id="bkArea" placeholder="e.g. Sector 88, House No. 21" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Date</label>
+            <input type="date" id="bkDate" required>
+          </div>
+          <div class="field">
+            <label>Time</label>
+            <div class="time-input-row">
+              <select id="bkHour" required>
+                <option value="">HH</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8</option>
+                <option>9</option><option>10</option><option>11</option><option>12</option>
+              </select>
+              <span class="time-colon">:</span>
+              <select id="bkMinute" required>
+                <option value="">MM</option>
+                <option>00</option><option>05</option><option>10</option><option>15</option>
+                <option>20</option><option>25</option><option>30</option><option>35</option>
+                <option>40</option><option>45</option><option>50</option><option>55</option>
+              </select>
+              <select id="bkMeridiem" required>
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Partner assign karein</label>
+          <select id="bkPartner">
+            <option value="broadcast">Sabhi nearby partners ko bhejein</option>
+            <option>Amit — Mohali</option>
+            <option>Ramesh — Zirakpur</option>
+            <option>Suresh — Panchkula</option>
+            <option>Priya — Ludhiana</option>
+            <option>Vikash — Chandigarh</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Message (optional)</label>
+          <textarea id="bkMessage" rows="3" placeholder="Koi bhi message ya note likhein..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Booking Add Karein</button>
+      </form>
+
+      <div class="section-label">Naya booking assign karein <span class="tab-badge" id="queueBadge">2</span></div>
+
+      <div id="assignQueueList">
+
+      <div class="assign-card" id="assignCard1" data-booking="9429">
+        <div class="assign-head">
+          <div class="assign-title">Home cleaning <span class="booking-id">#9429</span></div>
+          <div class="assign-timer" data-seconds="30">30 sec</div>
+        </div>
+        <div class="assign-line">Area: Mohali, Sector 88 · House No. 21</div>
+        <div class="assign-line">Client: 98xxxxxx14</div>
+
+        <div class="field" style="margin-top:12px;">
+          <label>Partner assign karein</label>
+          <select class="assignPartnerSelect">
+            <option>Amit — Mohali</option>
+            <option>Ramesh — Zirakpur</option>
+            <option>Suresh — Panchkula</option>
+            <option>Priya — Ludhiana</option>
+          </select>
+        </div>
+
+        <div class="assign-actions">
+          <button class="view-profile-btn" onclick="window.location.href='admin/partner/dashboard.html'">View Profile</button>
+          <button class="btn-reject" onclick="handleAssign(this,'reject')">Reject</button>
+          <button class="btn-approve" onclick="handleAssign(this,'accept')">Accept</button>
+        </div>
+      </div>
+
+      <div class="assign-card" id="assignCard2" data-booking="9430">
+        <div class="assign-head">
+          <div class="assign-title">AC service <span class="booking-id">#9430</span></div>
+          <div class="assign-timer" data-seconds="30">30 sec</div>
+        </div>
+        <div class="assign-line">Area: Chandigarh, Sector 22</div>
+        <div class="assign-line">Client: 99xxxxxx02</div>
+
+        <div class="field" style="margin-top:12px;">
+          <label>Partner assign karein</label>
+          <select class="assignPartnerSelect">
+            <option>Vikash — Chandigarh</option>
+            <option>Amit — Mohali</option>
+            <option>Suresh — Panchkula</option>
+          </select>
+        </div>
+
+        <div class="assign-actions">
+          <button class="view-profile-btn" onclick="window.location.href='admin/partner/dashboard.html'">View Profile</button>
+          <button class="btn-reject" onclick="handleAssign(this,'reject')">Reject</button>
+          <button class="btn-approve" onclick="handleAssign(this,'accept')">Accept</button>
+        </div>
+      </div>
+
+      </div>
+
+      <div class="empty-state" id="emptyAssign" style="display:none;">
+        Abhi assign karne ke liye koi naya booking nahi hai.
+      </div>
+    </section>
+
+    <!-- ===================== PARTNERS SECTION ===================== -->
+    <section class="panel" id="partnersPanel">
+
+      <div class="section-label">Partners Details</div>
+
+      <div class="chip-row" id="partnerChips">
+        <div class="chip active" data-group="all">Sabhi</div>
+        <div class="chip" data-group="fixed">Fixed Partners</div>
+        <div class="chip" data-group="training">Under Training</div>
+        <div class="chip" data-group="request">Partner Requests</div>
+      </div>
+
+      <div id="partnersDetailList">
+
+        <div class="partner-detail-card" data-group="fixed">
+          <div class="assign-head">
+            <div class="assign-title">Amit</div>
+            <span class="pd-tag fixed">Fixed Partner</span>
+          </div>
+          <div class="assign-line">Home cleaning · Mohali Sector-8</div>
+          <div class="assign-line">2:00 PM – 3:00 PM</div>
+          <div class="assign-actions">
+            <button class="view-profile-btn" onclick="window.location.href='admin/partner/dashboard.html'">View Profile</button>
+            <button class="btn-approve" onclick="alert('Register &amp; Start ho gaya')">Register &amp; Start</button>
+          </div>
+        </div>
+
+        <div class="partner-detail-card" data-group="fixed">
+          <div class="assign-head">
+            <div class="assign-title">Mohit</div>
+            <span class="pd-tag fixed">Fixed Partner</span>
+          </div>
+          <div class="assign-line">Bathroom cleaning · Dehradun</div>
+          <div class="assign-line">10:00 AM – 4:30 PM</div>
+          <div class="assign-actions">
+            <button class="view-profile-btn" onclick="window.location.href='attendance.html'">View Profile</button>
+          </div>
+        </div>
+
+        <div class="partner-detail-card" data-group="training">
+          <div class="assign-head">
+            <div class="assign-title">Neha</div>
+            <span class="pd-tag training">Under Training</span>
+          </div>
+          <div class="assign-line">Sofa cleaning · Mohali</div>
+          <div class="assign-line">Trainer ke saath 2 shift bachi</div>
+          <div class="assign-actions">
+            <button class="view-profile-btn" onclick="window.location.href='admin/partner/dashboard.html'">View Profile</button>
+          </div>
+        </div>
+
+        <div class="partner-detail-card" data-group="request">
+          <div class="assign-head">
+            <div class="assign-title">Vikash</div>
+            <span class="pd-tag request">New Request</span>
+          </div>
+          <div class="assign-line">AC service · Chandigarh</div>
+          <div class="assign-line">Applied aaj</div>
+          <div class="assign-actions">
+            <button class="view-profile-btn" onclick="window.location.href='admin/partner/dashboard.html'">View Profile</button>
+            <button class="btn-reject" onclick="this.closest('.partner-detail-card').remove()">Reject</button>
+            <button class="btn-approve" onclick="this.closest('.partner-detail-card').querySelector('.pd-tag').outerHTML='&lt;span class=&quot;pd-tag fixed&quot;&gt;Fixed Partner&lt;/span&gt;'; this.remove();">Accept</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="empty-state" id="emptyPartnerGroup" style="display:none;">
+        Is category mein koi partner nahi hai.
+      </div>
+    </section>
+
+    <div class="footnote">Busy Bucket Admin Panel</div>
+  </div>
+
+  </div><!-- /.scroll-area -->
+
+  <!-- ===================== PARTNER PROFILE / LIVE STATUS MODAL ===================== -->
+  <div class="profile-modal-overlay" id="profileModalOverlay" onclick="closePartnerProfile(event)">
+    <div class="profile-modal">
+      <div class="profile-modal-head">
+        <div class="profile-modal-avatar" id="profileModalAvatar">A</div>
+        <div>
+          <div class="profile-modal-name" id="profileModalName">Amit</div>
+          <div class="profile-modal-status" id="profileModalStatus">Live status</div>
+        </div>
+        <button class="profile-modal-close" onclick="closePartnerProfile(event)">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="profile-modal-body">
+        <div class="profile-row">
+          <span class="profile-label">Kya kar raha hai</span>
+          <span class="profile-value" id="profileModalService">Home cleaning</span>
+        </div>
+        <div class="profile-row">
+          <span class="profile-label">Kahan hai</span>
+          <span class="profile-value" id="profileModalArea">Sector 68, Kothi No. 92</span>
+        </div>
+        <div class="profile-row">
+          <span class="profile-label">Timing</span>
+          <span class="profile-value" id="profileModalTiming">2:00 PM – 3:00 PM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a href="manager-dashboard.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5B6B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+      Dashboard
+    </a>
+    <a href="manager-attendance.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5B6B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 12h8M8 16h5M8 8h8"/></svg>
+      Admins
+    </a>
+    <a href="manager-booking.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5B6B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      Bookings
+    </a>
+  </div>
+</div>
+
+
+<script src="manager-dashboard.js"></script>
+
+</body>
+</html>

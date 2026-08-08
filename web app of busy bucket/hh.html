@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Busy Bucket — Partner Panel</title>
+<style>
+  :root{
+    --pine-dark:#0f3d33;
+    --pine:#1a5c4d;
+    --pine-light:#25735f;
+    --coral:#ff8a3d;
+    --glass:rgba(255,255,255,0.06);
+    --glass-border:rgba(255,255,255,0.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:36px;
+    padding:40px 20px;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(255,255,255,0.05), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(255,138,61,0.08), transparent 45%),
+      linear-gradient(160deg, var(--pine-dark) 0%, var(--pine) 60%, var(--pine-light) 100%);
+  }
+  .brand img{
+    width:200px;
+    height:auto;
+    filter:drop-shadow(0 6px 18px rgba(0,0,0,0.3));
+    
+  }
+
+
+.brand{
+  
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    marguin-top:20px;
+    margin-bottom:none;
+    margin-left:0px;
+    
+  }
+.brand:hover{
+    transform:translateY(3px);
+}
+
+  .card{
+    width:100%;
+    max-width:560px;
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    border-radius:20px;
+    padding:28px;
+    display:flex;
+    align-items:center;
+    gap:24px;
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    cursor:pointer;
+    transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+    box-shadow:0 8px 30px rgba(0,0,0,0.25);
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,0.09);
+    box-shadow:0 14px 40px rgba(0,0,0,0.32);
+  }
+  .card:active{transform:translateY(0px) scale(.99);}
+  .logo-ring{
+    flex-shrink:0;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.25);
+  }
+  .logo-ring img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+  .content{flex:1;min-width:0;}
+  .content .row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:8px;
+  }
+  .emoji{font-size:22px;line-height:1;}
+  .content h2{
+    color:#ffffff;
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .content p{
+    color:rgba(255,255,255,0.72);
+    font-size:15px;
+    line-height:1.4;
+  }
+  .chevron{
+    flex-shrink:0;
+    color:rgba(255,255,255,0.65);
+  }
+  @media (max-width:480px){
+    .brand img{width:88px;}
+    .card{padding:20px;gap:16px;}
+    .logo-ring{width:84px;height:84px;padding:9px;}
+    .content h2{font-size:20px;}
+    .content p{font-size:13.5px;}
+  }
+</style>
+</head>
+<body>
+
+ <div class="brand">
+    <a href="home/admin-home.html"><img src="logo.png" alt="Busy Bucket Logo">  </a>
+ </div>
+<a  href="home/director/manager/admin/partner/partner-login.html">
+  <div class="card" role="button" tabindex="0" aria-label="Open Partner Panel">
+    <div class="logo-ring">
+      <img src="busybucket.png" alt="Busy Bucket logo">
+    </div>
+    <div class="content">
+      <div class="row">
+        <span class="emoji">🤝</span>
+        <h2>Partner Panel</h2>
+      </div>
+      <p>View Jobs, Earnings, Profile &amp; Notifications</p>
+ </a>
+    </div>
+    <svg class="chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+ 
+  </div>
+  
+</body>
+</html>
